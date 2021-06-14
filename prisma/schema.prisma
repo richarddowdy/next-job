@@ -1,0 +1,53 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id           Int           @id @default(autoincrement())
+  username     String        @unique
+  password     String
+  email        String?       @unique
+  applications Application[]
+
+  @@map("users")
+}
+
+model Job {
+  id            Int           @id @default(autoincrement())
+  title         String
+  pay           Int?
+  company       Company       @relation(fields: [companySymbol], references: [symbol])
+  companySymbol String        @map("company_symbol")
+  Application   Application[]
+
+  @@map("jobs")
+}
+
+model Company {
+  id          Int     @id @default(autoincrement())
+  name        String
+  symbol      String  @unique
+  employees   Int
+  phoneNumber String? @map("phone_number")
+  jobs        Job[]
+
+  @@map("companies")
+}
+
+model Application {
+  id          Int  @id @default(autoincrement())
+  applicant   User @relation(fields: [applicantId], references: [id])
+  applicantId Int  @map("applicant_id")
+  job         Job  @relation(fields: [jobId], references: [id])
+  jobId       Int  @map("job_id")
+
+  @@map("applications")
+}
