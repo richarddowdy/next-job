@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
+import LandingLayout from "../components/layouts/LandingLayout";
 
 const UserComponent = ({ data }) => {
   const { id, username, password, email } = data;
@@ -54,3 +55,5 @@ export default function Home() {
     </>
   );
 }
+
+Home.Layout = LandingLayout;
