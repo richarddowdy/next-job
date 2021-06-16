@@ -4,9 +4,11 @@ import { Navbar, Nav } from "react-bootstrap";
 
 export default function SiteNav() {
   return (
-    <Navbar className="bg-green-300 h-24" expand="lg">
+    <Navbar className="bg-green-300" expand="lg">
       <Link href="/" passHref>
-        <Navbar.Brand href="#home">Next-Job</Navbar.Brand>
+        <Navbar.Brand href="#home" className="m-4" style={{ fontSize: 40, fontWeight: "bold" }}>
+          Next-Job
+        </Navbar.Brand>
       </Link>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
