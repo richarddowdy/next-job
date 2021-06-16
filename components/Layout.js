@@ -10,26 +10,33 @@ export default function Layout({ children, title = "This is the default title" }
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head> */}
-      <Navbar bg="light" expand="lg">
+      <Navbar className="bg-green-300 h-24" expand="lg">
         <Link href="/" passHref>
-          <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+          <Navbar.Brand href="#home">Next-Job</Navbar.Brand>
         </Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto">
+          <Nav className="ml-auto">
             <Link href="/" passHref>
               <Nav.Link>Home</Nav.Link>
             </Link>
             <Link href="/users" passHref>
               <Nav.Link>Users</Nav.Link>
             </Link>
+            <Link href="/companies" passHref>
+              <Nav.Link>Companies</Nav.Link>
+            </Link>
+            <Link href="/jobs" passHref>
+              <Nav.Link>Jobs</Nav.Link>
+            </Link>
+            <Link href="/#" passHref className="">
+              <Nav.Link>Login</Nav.Link>
+            </Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
 
       {children}
-
-      <footer>{"I`m here to stay"}</footer>
     </>
   );
 }

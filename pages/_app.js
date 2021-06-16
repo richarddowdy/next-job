@@ -1,11 +1,13 @@
-import "../styles/globals.css";
+// import "../styles/globals.css";
+import "tailwindcss/tailwind.css";
+
 import Layout from "../components/Layout";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function MyApp({ Component, pageProps }) {
   return (
     <Layout>
-      <Component {...pageProps} />;
+      <Component {...pageProps} />
     </Layout>
   );
 }
