@@ -10,14 +10,14 @@ const UserComponent = ({ data }) => {
   const { id, username, password, email } = data;
   console.log("This is a user", data);
   return (
-    <>
+    <div className="">
       <Link href={`/users/[id]`} as={`/users/${id}`}>
         <a>User {id}</a>
       </Link>
       <p>{username}</p>
       <p>{password}</p>
       <p>{email}</p>
-    </>
+    </div>
   );
 };
 

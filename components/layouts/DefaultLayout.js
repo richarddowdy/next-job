@@ -1,3 +1,7 @@
 export default function DefaultLayout({ children, title = "This is the default title" }) {
-  return <>{children}</>;
+  return (
+    <div className="">
+      <div className="">{children}</div>
+    </div>
+  );
 }
