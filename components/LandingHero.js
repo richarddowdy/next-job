@@ -1,7 +1,7 @@
 import { Button } from "react-bootstrap";
 export default function LandingHero() {
   return (
-    <div className="">
+    <>
       <h1
       // className="my-4 text-3xl md:text-5xl text-purple-800 font-bold leading-tight text-center md:text-left slide-in-bottom-h1"
       >
@@ -30,6 +30,6 @@ export default function LandingHero() {
           Sign Up
         </Button>
       </div>
-    </div>
+    </>
   );
 }
