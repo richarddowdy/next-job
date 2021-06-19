@@ -26,6 +26,7 @@ model Job {
   salary         Int?
   company        Company       @relation(fields: [company_handle], references: [handle])
   company_handle String        @map("company_handle")
+  num_applicants Int           @default(0)
   Application    Application[]
 
   @@map("jobs")

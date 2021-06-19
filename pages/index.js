@@ -8,25 +8,6 @@ import LandingLayout from "../components/layouts/LandingLayout";
 import LandingHero from "../components/LandingHero";
 
 export default function Home() {
-  const [isLoading, setIsLoading] = useState(false);
-  const [users, setUsers] = useState([]);
-
-  useEffect(() => {
-    if (!users.length) {
-      setIsLoading(true);
-      const fetchTest = async () => {
-        const { data } = await axios.get("api/users");
-        console.log(data.data);
-        setUsers(data.data);
-        console.log(users);
-        // return data;
-      };
-
-      fetchTest();
-      setIsLoading(false);
-    }
-  }, []);
-
   return (
     <div className="row">
       <div className="col-lg-6">
