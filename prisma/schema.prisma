@@ -21,33 +21,34 @@ model User {
 }
 
 model Job {
-  id            Int           @id @default(autoincrement())
-  title         String
-  pay           Int?
-  company       Company       @relation(fields: [companySymbol], references: [symbol])
-  companySymbol String        @map("company_symbol")
-  Application   Application[]
+  id             Int           @id @default(autoincrement())
+  title          String
+  salary         Int?
+  company        Company       @relation(fields: [company_handle], references: [handle])
+  company_handle String        @map("company_handle")
+  num_applicants Int           @default(0)
+  Application    Application[]
 
   @@map("jobs")
 }
 
 model Company {
-  id          Int     @id @default(autoincrement())
-  name        String
-  symbol      String  @unique
-  employees   Int
-  phoneNumber String? @map("phone_number")
-  jobs        Job[]
+  id            Int    @id @default(autoincrement())
+  handle        String @unique
+  name          String
+  num_employees Int
+  Job           Job[]
 
   @@map("companies")
 }
 
 model Application {
-  id          Int  @id @default(autoincrement())
-  applicant   User @relation(fields: [applicantId], references: [id])
-  applicantId Int  @map("applicant_id")
-  job         Job  @relation(fields: [jobId], references: [id])
-  jobId       Int  @map("job_id")
+  id        Int    @id @default(autoincrement())
+  applicant User   @relation(fields: [username], references: [username])
+  username  String @map("username")
+  job       Job    @relation(fields: [jobId], references: [id])
+  jobId     Int    @map("job_id")
+  state     String
 
   @@map("applications")
 }

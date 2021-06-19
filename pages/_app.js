@@ -1,12 +1,19 @@
 import "../styles/globals.css";
-import Layout from "../components/Layout";
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "tailwindcss/tailwind.css";
+import "bootstrap/dist/css/bootstrap.css";
+
+import MainLayout from "../components/layouts/MainLayout";
+import DefaultLayout from "../components/layouts/DefaultLayout";
 
 function MyApp({ Component, pageProps }) {
+  const Layout = Component.Layout || DefaultLayout; //TODO make a DefaultLayout
+
   return (
-    <Layout>
-      <Component {...pageProps} />;
-    </Layout>
+    <MainLayout>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </MainLayout>
   );
 }
 
