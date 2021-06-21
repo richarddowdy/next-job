@@ -1,6 +1,6 @@
 import "../styles/globals.css";
-// import "tailwindcss/tailwind.css";
 import "bootstrap/dist/css/bootstrap.css";
+// import "tailwindcss/tailwind.css";
 
 import MainLayout from "../components/layouts/MainLayout";
 import DefaultLayout from "../components/layouts/DefaultLayout";

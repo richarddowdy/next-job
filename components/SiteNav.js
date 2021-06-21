@@ -1,10 +1,9 @@
-import { useState } from "react";
 import Link from "next/link";
 import { Navbar, Nav } from "react-bootstrap";
 
 export default function SiteNav() {
   return (
-    <Navbar className="bg-green-300" expand="lg" bg="info">
+    <Navbar className="" expand="lg" bg="light">
       <Link href="/" passHref>
         <Navbar.Brand href="#home" className="m-4" style={{ fontSize: 40, fontWeight: "bold" }}>
           Next-Job
