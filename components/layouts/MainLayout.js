@@ -5,7 +5,7 @@ import SiteNav from "../SiteNav";
 
 export default function MainLayout({ children, title = "Next-Job" }) {
   return (
-    <div className="">
+    <div className="" id="MainLayout">
       <Head>
         <title>{title}</title>
         <meta charSet="utf-8" />
