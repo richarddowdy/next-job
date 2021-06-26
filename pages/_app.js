@@ -1,6 +1,8 @@
 import "../styles/globals.css";
 import "bootstrap/dist/css/bootstrap.css";
 // import "tailwindcss/tailwind.css";
+import { Provider } from "react-redux";
+import store from "../redux/store";
 
 import MainLayout from "../components/layouts/MainLayout";
 import DefaultLayout from "../components/layouts/DefaultLayout";
@@ -8,12 +10,21 @@ import DefaultLayout from "../components/layouts/DefaultLayout";
 function MyApp({ Component, pageProps }) {
   const Layout = Component.Layout || DefaultLayout; //TODO make a DefaultLayout
 
+  //   function async getInitialProps({Component, ctx}) {
+  //     const pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {};
+
+  //     //Anything returned here can be accessed by the client
+  //     return {pageProps: pageProps};
+  // }
+
   return (
-    <MainLayout>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </MainLayout>
+    <Provider store={store}>
+      <MainLayout>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </MainLayout>
+    </Provider>
   );
 }
 
