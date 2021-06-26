@@ -24,7 +24,7 @@ export default function SiteNav() {
           <Link href="/jobs" passHref>
             <Nav.Link>Jobs</Nav.Link>
           </Link>
-          <Link href="/#" passHref className="">
+          <Link href="/login" passHref className="">
             <Nav.Link>Login</Nav.Link>
           </Link>
         </Nav>
