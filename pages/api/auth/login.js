@@ -1,7 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
 // pages/index.js
-import prisma from "../../lib/prisma";
+import prisma from "../../../lib/prisma";
 import { compareSync } from "bcryptjs";
 const jwt = require("jsonwebtoken");
 

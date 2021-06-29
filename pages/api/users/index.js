@@ -4,6 +4,10 @@
 import prisma from "../../../lib/prisma";
 
 export default async (req, res) => {
-  const result = await prisma.user.findMany();
-  res.status(200).json({ data: result });
+  const result = await prisma.user.findMany({
+    orderBy: {
+      id: "asc",
+    },
+  });
+  res.status(200).json(result);
 };

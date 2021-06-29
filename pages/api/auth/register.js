@@ -1,7 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
 // pages/index.js
-import prisma from "../../lib/prisma";
+import prisma from "../../../lib/prisma";
 import { hashSync } from "bcryptjs";
 const jwt = require("jsonwebtoken");
 
@@ -16,14 +16,25 @@ export default async (req, res, next) => {
   }
 
   const { username, password } = req.body;
-  const hashedPass = hashSync(password, BCRYPT_WORK_FACTOR);
-
-  const userData = {
-    username,
-    password: hashedPass,
-  };
 
   try {
+    // Check if username already exists
+    const user = await prisma.user.findUnique({
+      where: {
+        username: username,
+      },
+    });
+    if (user) {
+      return res.status(400).json({ success: false, message: "That username already exits." });
+    }
+
+    const hashedPass = hashSync(password, BCRYPT_WORK_FACTOR);
+
+    const userData = {
+      username,
+      password: hashedPass,
+    };
+
     const newUser = await prisma.user.create({
       data: userData,
     });
@@ -32,7 +43,9 @@ export default async (req, res, next) => {
 
     const token = jwt.sign(newUser, JWT_KEY);
 
-    res.status(200).json({ success: true, newUser, token });
+    console.log(newUser);
+
+    res.status(200).json({ success: true, token });
   } catch (e) {
     console.log(e);
     res.status(500).json({ error: e });
