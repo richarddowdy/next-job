@@ -7,6 +7,8 @@ import store from "../redux/store";
 import MainLayout from "../components/layouts/MainLayout";
 import DefaultLayout from "../components/layouts/DefaultLayout";
 
+export const TOKEN_STORAGE_ID = "next_job_token";
+
 function MyApp({ Component, pageProps }) {
   const Layout = Component.Layout || DefaultLayout; //TODO make a DefaultLayout
 

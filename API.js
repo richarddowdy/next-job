@@ -1,9 +1,10 @@
 import axios from "axios";
-import { TOKEN_STORAGE_ID } from "./App.js";
+import { TOKEN_STORAGE_ID } from "./pages/_app";
+// import { TOKEN_STORAGE_ID } from "./App.js"; // this isn't a thing
 
-const BASE_URL = process.env.BASE_URL || "http://localhost:3001";
+const BASE_URL = process.env.BASE_URL || "http://localhost:3000";
 
-class JoblyApi {
+class API {
   static async request(endpoint, params = {}, verb = "get") {
     let _token = localStorage.getItem(TOKEN_STORAGE_ID);
 
@@ -12,7 +13,9 @@ class JoblyApi {
     let q;
 
     if (verb === "get") {
-      q = axios.get(`${BASE_URL}/${endpoint}`, { params: { _token, ...params } });
+      q = axios.get(`${BASE_URL}/${endpoint}`, {
+        params: { _token, ...params },
+      });
     } else if (verb === "post") {
       q = axios.post(`${BASE_URL}/${endpoint}`, { _token, ...params });
     } else if (verb === "patch") {
@@ -69,7 +72,7 @@ class JoblyApi {
   }
 }
 
-export default JoblyApi;
+export default API;
 
 // TODO - Use in top level component -- _app.js
 useEffect(() => {
