@@ -2,7 +2,7 @@ import axios from "axios";
 import { TOKEN_STORAGE_ID } from "./pages/_app";
 // import { TOKEN_STORAGE_ID } from "./App.js"; // this isn't a thing
 
-const BASE_URL = process.env.BASE_URL || "http://localhost:3000";
+const BASE_URL = process.env.BASE_URL || "http://localhost:3000/api";
 
 class API {
   static async request(endpoint, params = {}, verb = "get") {
@@ -74,23 +74,23 @@ class API {
 
 export default API;
 
-// TODO - Use in top level component -- _app.js
-useEffect(() => {
-  async function getCurrentUser() {
-    try {
-      let { username } = decode(token);
-      let currentUser = await JoblyApi.getCurrentUser(username);
-      setCurrentUser(currentUser);
-    } catch (err) {
-      setCurrentUser(null);
-    }
-    setInfoLoaded(true);
-  }
-  setInfoLoaded(false);
-  getCurrentUser();
-}, [token]);
+// // TODO - Use in top level component -- _app.js
+// useEffect(() => {
+//   async function getCurrentUser() {
+//     try {
+//       let { username } = decode(token);
+//       let currentUser = await JoblyApi.getCurrentUser(username);
+//       setCurrentUser(currentUser);
+//     } catch (err) {
+//       setCurrentUser(null);
+//     }
+//     setInfoLoaded(true);
+//   }
+//   setInfoLoaded(false);
+//   getCurrentUser();
+// }, [token]);
 
-const handleLogOut = () => {
-  setCurrentUser(null);
-  setToken(null);
-};
+// const handleLogOut = () => {
+//   setCurrentUser(null);
+//   setToken(null);
+// };
