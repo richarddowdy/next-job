@@ -11,11 +11,11 @@ export default async (req, res) => {
     },
     include: {
       jobs: true,
-      users: {
+      employees: {
         select: {
           id: true,
           username: true,
-          company_association: true,
+          employer_handle: true,
           email: true,
           is_admin: true,
         },
