@@ -36,7 +36,7 @@ export default async (req, res, next) => {
 
     const token = jwt.sign(user, JWT_KEY);
 
-    return res.status(200).json({ success: isValid, token });
+    return res.status(200).json({ token });
   } catch (e) {
     console.log(e);
     res.status(500).json({ error: e });

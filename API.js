@@ -1,8 +1,7 @@
 import axios from "axios";
 import { TOKEN_STORAGE_ID } from "./pages/_app";
-// import { TOKEN_STORAGE_ID } from "./App.js"; // this isn't a thing
 
-const BASE_URL = process.env.BASE_URL || "http://localhost:3000/api";
+export const BASE_API_URL = process.env.BASE_API_URL || "http://localhost:3000/api"; // i'll set BASE_API_URL in produciton env
 
 class API {
   static async request(endpoint, params = {}, verb = "get") {
@@ -13,13 +12,13 @@ class API {
     let q;
 
     if (verb === "get") {
-      q = axios.get(`${BASE_URL}/${endpoint}`, {
+      q = axios.get(`${BASE_API_URL}/${endpoint}`, {
         params: { _token, ...params },
       });
     } else if (verb === "post") {
-      q = axios.post(`${BASE_URL}/${endpoint}`, { _token, ...params });
+      q = axios.post(`${BASE_API_URL}/${endpoint}`, { _token, ...params });
     } else if (verb === "patch") {
-      q = axios.patch(`${BASE_URL}/${endpoint}`, { _token, ...params });
+      q = axios.patch(`${BASE_API_URL}/${endpoint}`, { _token, ...params });
     }
 
     try {
@@ -53,11 +52,13 @@ class API {
 
   static async login(data) {
     let res = await this.request(`login`, data, "post");
+    // console.log("LOGGING IN", res);
     return res.token;
   }
 
   static async register(data) {
     let res = await this.request(`users`, data, "post");
+    // console.log("REGISTERING NEW USER", res);
     return res.token;
   }
 

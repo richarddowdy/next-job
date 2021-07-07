@@ -1,21 +1,15 @@
 import axios from "axios";
-
+import { BASE_API_URL } from "../../API";
 // Action Types
 export const ADD_USER = "ADD_USER";
 export const LOGOUT_USER = "LOGOUT_USER";
-
-let BASE_API_URL;
-process.env.NODE_ENV == "productions"
-  ? (BASE_API_URL = `widnow.location.origin/api`)
-  : (BASE_API_URL = "http://localhost:3000/api");
-export { BASE_API_URL };
 
 // Action Creators
 
 export const loginUser = (data) => async (dispatch) => {
   try {
     const { username, password } = data;
-    const response = await axios.post(`${BASE_API_URL}/login`, { username, password });
+    const response = await axios.post(`${BASE_API_URL}/auth/login`, { username, password });
     return dispatch(addUser(response.data));
   } catch (e) {
     console.error(e);

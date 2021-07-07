@@ -5,7 +5,7 @@ import prisma from "../../../lib/prisma";
 
 export default async (req, res) => {
   const { handle } = req.query;
-  const result = await prisma.company.findUnique({
+  const company = await prisma.company.findUnique({
     where: {
       handle: handle,
     },
@@ -22,5 +22,5 @@ export default async (req, res) => {
       },
     },
   });
-  res.status(200).json(result);
+  res.status(200).json(company);
 };
