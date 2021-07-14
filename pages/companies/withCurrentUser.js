@@ -32,7 +32,7 @@ const WithCurrentUser = (Component) => {
     //   setCurrentUser(null);
     //   setToken(null);
     // };
-    console.log(setToken);
+    // console.log(setToken);
     return <Component {...props} setToken={setToken} />;
   };
   return NewComponent;

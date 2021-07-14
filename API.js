@@ -64,6 +64,7 @@ class API {
 
   static async getCurrentUser(username) {
     let res = await this.request(`users/${username}`);
+    // console.log("RETRIEVING CURRENT USER", res.user);
     return res.user;
   }
 

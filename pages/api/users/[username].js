@@ -4,12 +4,14 @@
 import prisma from "../../../lib/prisma";
 
 export default async (req, res) => {
-  const { id } = req.query;
+  const { username } = req.query;
+  console.log(username);
 
   const result = await prisma.user.findUnique({
     where: {
-      id: +id,
+      username: username,
     },
   });
-  res.status(200).json(result);
+  delete result.password;
+  res.status(200).json({ user: result });
 };
