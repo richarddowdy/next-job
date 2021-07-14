@@ -1,6 +1,6 @@
-import login from "../pages/api/login";
+import login from "../../pages/api/auth/login";
 import { createMocks } from "node-mocks-http";
-import prisma from "../lib/prisma";
+import prisma from "../../lib/prisma";
 import "setimmediate";
 
 afterEach(async (done) => {

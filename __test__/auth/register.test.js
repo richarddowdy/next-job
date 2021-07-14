@@ -1,6 +1,6 @@
-import register from "../pages/api/register";
+import register from "../../pages/api/auth/register";
 import { createMocks } from "node-mocks-http";
-import prisma from "../lib/prisma";
+import prisma from "../../lib/prisma";
 import "setImmediate";
 
 afterAll(async (done) => {
@@ -28,7 +28,7 @@ describe("/POST /api/register", () => {
     const { req, res } = createMocks({
       method: "POST",
       body: {
-        username: "makwww2ccNfecc3",
+        username: "maew2ccNfecc3",
         password: "password",
       },
     });
