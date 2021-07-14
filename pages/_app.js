@@ -6,22 +6,20 @@ import store from "../redux/store";
 
 import MainLayout from "../components/layouts/MainLayout";
 import DefaultLayout from "../components/layouts/DefaultLayout";
+import WithCurrentUser from "./companies/withCurrentUser";
+
+export const TOKEN_STORAGE_ID = "next_job_token";
+export const WINDOW_GLOBAL = typeof window !== "undefined" && window;
 
 function MyApp({ Component, pageProps }) {
   const Layout = Component.Layout || DefaultLayout; //TODO make a DefaultLayout
-
-  //   function async getInitialProps({Component, ctx}) {
-  //     const pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {};
-
-  //     //Anything returned here can be accessed by the client
-  //     return {pageProps: pageProps};
-  // }
+  const ComponentWithCurrentUser = WithCurrentUser(Component);
 
   return (
     <Provider store={store}>
       <MainLayout>
         <Layout>
-          <Component {...pageProps} />
+          <ComponentWithCurrentUser {...pageProps} />
         </Layout>
       </MainLayout>
     </Provider>

@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { Formik } from "formik";
 import { loginUser, logoutCurrentUser, logoutUser } from "../../redux/actions/userActions";
 
-export default function LoginForm({}) {
+export default function LoginForm({ setToken }) {
   const dispatch = useDispatch();
   return (
     <Formik
@@ -25,9 +25,11 @@ export default function LoginForm({}) {
         }
         return errors;
       }}
-      onSubmit={(values) => {
+      onSubmit={async (values) => {
         console.log(values);
-        dispatch(loginUser(values));
+        let result = await dispatch(loginUser(values));
+        const { token } = result.user;
+        setToken(token);
       }}
     >
       {({ values, errors, touched, handleChange, handleSubmit, handleBlur }) => (

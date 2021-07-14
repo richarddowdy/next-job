@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import CompaniesList from "../../components/company/CompaniesList";
+import API from "../../API";
 
 export default function CompanyPage() {
   const [companies, setCompanies] = useState([]);
@@ -8,9 +9,8 @@ export default function CompanyPage() {
   useEffect(() => {
     if (!companies.length) {
       const fetchCompanies = async () => {
-        const response = await axios.get("api/companies");
-        const companies = response.data.data;
-        console.log(companies);
+        const companies = await API.getCompanies();
+        // console.log(companies);
         setCompanies(companies);
       };
       fetchCompanies();

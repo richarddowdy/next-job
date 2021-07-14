@@ -11,11 +11,14 @@ generator client {
 }
 
 model User {
-  id           Int           @id @default(autoincrement())
-  username     String        @unique
-  password     String
-  email        String?       @unique
-  applications Application[]
+  id              Int           @id @default(autoincrement())
+  username        String        @unique
+  password        String
+  email           String?       @unique
+  is_admin        String?       @default("false")
+  company         Company?      @relation(fields: [employer_handle], references: [handle])
+  employer_handle String?       @map("employer_handle")
+  applications    Application[]
 
   @@map("users")
 }
@@ -37,7 +40,8 @@ model Company {
   handle        String @unique
   name          String
   num_employees Int
-  Job           Job[]
+  jobs          Job[]
+  employees     User[]
 
   @@map("companies")
 }

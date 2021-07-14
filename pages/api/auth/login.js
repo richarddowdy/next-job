@@ -1,7 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
 // pages/index.js
-import prisma from "../../lib/prisma";
+import prisma from "../../../lib/prisma";
 import { compareSync } from "bcryptjs";
 const jwt = require("jsonwebtoken");
 
@@ -36,7 +36,7 @@ export default async (req, res, next) => {
 
     const token = jwt.sign(user, JWT_KEY);
 
-    return res.status(200).json({ success: isValid, token });
+    return res.status(200).json({ token });
   } catch (e) {
     console.log(e);
     res.status(500).json({ error: e });
