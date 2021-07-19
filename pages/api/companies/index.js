@@ -4,6 +4,16 @@
 import prisma from "../../../lib/prisma";
 
 export default async (req, res) => {
-  const companies = await prisma.company.findMany();
+  const { onlyHandles } = req.query;
+  let companies;
+  if (onlyHandles) {
+    companies = await prisma.company.findMany({
+      select: {
+        handle: true,
+      },
+    });
+  } else {
+    companies = await prisma.company.findMany();
+  }
   res.status(200).json({ companies });
 };

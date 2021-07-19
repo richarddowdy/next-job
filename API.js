@@ -62,7 +62,14 @@ class API {
     return res.token;
   }
 
-  static async getCurrentUser(username) {
+  static async getCurrentUser(username, getComapnyHandles = false) {
+    if (getComapnyHandles) {
+      const companyHandles = await this.request(`companies`, { onlyHandles: true });
+      const userRes = await this.request(`users/${username}`);
+      res = { ...userRes.user, companyHandles: companyHandles.companies };
+      console.log(res);
+      return res;
+    }
     let res = await this.request(`users/${username}`);
     // console.log("RETRIEVING CURRENT USER", res.user);
     return res.user;
