@@ -61,13 +61,12 @@ export default function ProfileForm({ userData }) {
               <Form.Control
                 as="select"
                 type="text"
-                name="employer_handle"
-                value={values.employer_handle}
+                name="employer"
+                defaultValue={values.employer || ""}
                 onChange={handleChange}
                 onBlur={handleBlur}
               >
-                {/* TODO: HOW DO I GET THIS TO LOAD WITH THE CURRENT EMPLOYER PRESELECTED????/*/}
-                {!employer_handle && <option value="">None</option>}
+                <option value="">None</option>
                 {companyHandles.map((company) => {
                   // every time this or any part of the form changes it resets state, causing a rerender of the entire form
                   // rerendering the enitre form causes each of these options to be rerendered
