@@ -39,7 +39,7 @@ export default function UserProfile() {
               />
             </Col>
             <Col xs={12} sm={8}>
-              <h2>Reset user profile info</h2>
+              <h2 className="text-center text-lg-left">Reset user profile info</h2>
               <ProfileForm userData={userData} />
             </Col>
           </Row>

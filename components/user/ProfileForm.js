@@ -26,7 +26,7 @@ export default function ProfileForm({ userData }) {
       {({ values, errors, touched, handleChange, handleSubmit, handleBlur }) => (
         <Form onSubmit={handleSubmit}>
           <Row>
-            <Form.Group as={Col} controlId="formBasicUsername">
+            <Form.Group as={Col} md={6} controlId="formBasicUsername">
               <Form.Label>Username</Form.Label>
               <Form.Control
                 type="text"
@@ -40,7 +40,7 @@ export default function ProfileForm({ userData }) {
               <Form.Text className="text-muted"></Form.Text>
               <Form.Control.Feedback type="invalid">{errors.username}</Form.Control.Feedback>
             </Form.Group>
-            <Form.Group as={Col} controlId="formBasicEmail">
+            <Form.Group as={Col} md={6} controlId="formBasicEmail">
               <Form.Label>Email</Form.Label>
               <Form.Control
                 type="text"
@@ -56,7 +56,7 @@ export default function ProfileForm({ userData }) {
             </Form.Group>
           </Row>
           <Row>
-            <Form.Group as={Col} md="3" controlId="formBasicEmployer">
+            <Form.Group as={Col} md={3} controlId="formBasicEmployer">
               <Form.Label>Employer</Form.Label>
               <Form.Control
                 as="select"
