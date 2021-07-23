@@ -17,7 +17,8 @@ export default function UserProfile() {
   useEffect(() => {
     if (router.isReady) {
       const fetchUserData = async () => {
-        const userResponse = await API.getCurrentUser(username, true /*, true */);
+        const getComapnyHandles = true;
+        const userResponse = await API.getCurrentUser(username, getComapnyHandles /*, true */);
         setUserData(userResponse);
       };
       fetchUserData();

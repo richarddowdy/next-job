@@ -35,6 +35,11 @@ class API {
     return res.companies;
   }
 
+  static async getCompanyCount() {
+    let res = await this.request("companies/count");
+    return res.totalCompanies;
+  }
+
   static async getCompany(handle) {
     let res = await this.request(`companies/${handle}`);
     return res.company;

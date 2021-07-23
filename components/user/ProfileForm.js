@@ -68,10 +68,6 @@ export default function ProfileForm({ userData }) {
               >
                 <option value="">None</option>
                 {companyHandles.map((company) => {
-                  // every time this or any part of the form changes it resets state, causing a rerender of the entire form
-                  // rerendering the enitre form causes each of these options to be rerendered
-                  // n number of options are rerendered on every keypress
-                  // do i care?
                   return (
                     <option key={company.handle} value={company.handle}>
                       {company.handle}

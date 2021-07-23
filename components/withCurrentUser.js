@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import useLocalStorage from "../../utils/hooks/useLocalStorage";
-import { TOKEN_STORAGE_ID } from "../_app";
+import useLocalStorage from "../utils/hooks/useLocalStorage";
+import { TOKEN_STORAGE_ID } from "../pages/_app";
 
 const WithCurrentUser = (Component) => {
   const NewComponent = (props) => {

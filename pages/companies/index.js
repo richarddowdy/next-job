@@ -5,17 +5,21 @@ import API from "../../API";
 
 export default function CompanyPage() {
   const [companies, setCompanies] = useState([]);
+  const [companyCount, setCompanyCount] = useState(null);
 
   useEffect(() => {
     if (!companies.length) {
       const fetchCompanies = async () => {
         const companies = await API.getCompanies();
+        const companyCount = await API.getCompanyCount(); // this could probably be included in the above api call;
         // console.log(companies);
         setCompanies(companies);
+        setCompanyCount(companyCount);
       };
       fetchCompanies();
     }
   }, []);
+
   return (
     <>
       <div>
@@ -26,6 +30,7 @@ export default function CompanyPage() {
       </div>
       <h1 className="text-center m-5">This is the compaies page</h1>
       <div style={{ height: 100 }}></div>
+      <p>Total Company Count: {companyCount}</p>
       <div className="d-flex flex-wrap justify-content-around">
         <CompaniesList companies={companies} />
       </div>

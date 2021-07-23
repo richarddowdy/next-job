@@ -6,7 +6,7 @@ import store from "../redux/store";
 
 import MainLayout from "../components/layouts/MainLayout";
 import DefaultLayout from "../components/layouts/DefaultLayout";
-import WithCurrentUser from "./companies/withCurrentUser";
+import WithCurrentUser from "../components/withCurrentUser";
 
 export const TOKEN_STORAGE_ID = "next_job_token";
 export const WINDOW_GLOBAL = typeof window !== "undefined" && window;
